@@ -11,7 +11,7 @@ import CoreData
 
 public class ACCoreDataMamager: NSObject {
 
-    // MARK; - Shared Manager
+    // MARK: - Shared Manager
     public class var sharedInstance : ACCoreDataMamager {
         struct Static {
             static let instance = ACCoreDataMamager()
@@ -22,8 +22,11 @@ public class ACCoreDataMamager: NSObject {
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.peromasamune.AppExtensiton_CoreData" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        let directory = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.peromasamune.appextension_coredata")
+        return directory!
+        
+//        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+//        return urls[urls.count-1] as! NSURL
         }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -35,6 +38,7 @@ public class ACCoreDataMamager: NSObject {
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
+        
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("AppExtensiton_CoreData.sqlite")
         var error: NSError? = nil
@@ -68,7 +72,7 @@ public class ACCoreDataMamager: NSObject {
         }()
 
     // MARK: - Core Data Saving support
-    public func saveContext () {
+    public func saveContext (block : ((Bool) -> Void)) {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
             if moc.hasChanges && !moc.save(&error) {
@@ -77,6 +81,7 @@ public class ACCoreDataMamager: NSObject {
                 NSLog("Unresolved error \(error), \(error!.userInfo)")
                 abort()
             }
+            block((error == nil))
         }
     }
 }

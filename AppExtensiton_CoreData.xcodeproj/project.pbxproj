@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30977B151C1830FA00662375 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30977B131C1830BF00662375 /* MobileCoreServices.framework */; };
+		30977B161C1830FA00662375 /* MobileCoreServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30977B131C1830BF00662375 /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30977B181C18367700662375 /* AppExtensiton_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FAFBB8A1C181375006872EC /* AppExtensiton_CoreData.xcdatamodeld */; };
 		9FAFBB891C181375006872EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAFBB881C181375006872EC /* AppDelegate.swift */; };
 		9FAFBB8C1C181375006872EC /* AppExtensiton_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FAFBB8A1C181375006872EC /* AppExtensiton_CoreData.xcdatamodeld */; };
 		9FAFBB8E1C181375006872EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAFBB8D1C181375006872EC /* ViewController.swift */; };
@@ -72,6 +75,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9FAFBBC81C1813D4006872EC /* ACFramework.framework in Embed Frameworks */,
+				30977B161C1830FA00662375 /* MobileCoreServices.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +94,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30977B111C182FCE00662375 /* AppExtensiton_CoreData.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AppExtensiton_CoreData.entitlements; sourceTree = "<group>"; };
+		30977B121C18300100662375 /* ACShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ACShareExtension.entitlements; sourceTree = "<group>"; };
+		30977B131C1830BF00662375 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9FAFBB831C181375006872EC /* AppExtensiton_CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppExtensiton_CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FAFBB871C181375006872EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FAFBB881C181375006872EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAFBBC71C1813D4006872EC /* ACFramework.framework in Frameworks */,
+				30977B151C1830FA00662375 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,9 +164,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30977B171C18310400662375 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				30977B131C1830BF00662375 /* MobileCoreServices.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
 		9FAFBB7A1C181375006872EC = {
 			isa = PBXGroup;
 			children = (
+				30977B171C18310400662375 /* Framework */,
 				9FAFBB851C181375006872EC /* AppExtensiton_CoreData */,
 				9FAFBB9E1C181375006872EC /* AppExtensiton_CoreDataTests */,
 				9FAFBBB11C1813D4006872EC /* ACFramework */,
@@ -183,6 +200,7 @@
 		9FAFBB851C181375006872EC /* AppExtensiton_CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				30977B111C182FCE00662375 /* AppExtensiton_CoreData.entitlements */,
 				9FAFBB881C181375006872EC /* AppDelegate.swift */,
 				9FAFBB8D1C181375006872EC /* ViewController.swift */,
 				9FAFBB921C181375006872EC /* Images.xcassets */,
@@ -257,6 +275,7 @@
 		9FAFBBD51C181446006872EC /* ACShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				30977B121C18300100662375 /* ACShareExtension.entitlements */,
 				9FAFBBD81C181446006872EC /* ShareViewController.swift */,
 				9FAFBBDA1C181446006872EC /* MainInterface.storyboard */,
 				9FAFBBD61C181446006872EC /* Supporting Files */,
@@ -389,6 +408,12 @@
 				TargetAttributes = {
 					9FAFBB821C181375006872EC = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = P6L2TCL49U;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9FAFBB9A1C181375006872EC = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -403,6 +428,12 @@
 					};
 					9FAFBBD31C181446006872EC = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = P6L2TCL49U;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -511,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FAFBBD91C181446006872EC /* ShareViewController.swift in Sources */,
+				30977B181C18367700662375 /* AppExtensiton_CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,9 +673,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AppExtensiton_CoreData/AppExtensiton_CoreData.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AppExtensiton_CoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -651,9 +687,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AppExtensiton_CoreData/AppExtensiton_CoreData.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AppExtensiton_CoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -773,6 +813,9 @@
 		9FAFBBE01C181446006872EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ACShareExtension/ACShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -780,6 +823,7 @@
 				INFOPLIST_FILE = ACShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -787,9 +831,13 @@
 		9FAFBBE11C181446006872EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ACShareExtension/ACShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ACShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -813,6 +861,7 @@
 				9FAFBBA71C181375006872EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FAFBBA81C181375006872EC /* Build configuration list for PBXNativeTarget "AppExtensiton_CoreDataTests" */ = {
 			isa = XCConfigurationList;
@@ -821,6 +870,7 @@
 				9FAFBBAA1C181375006872EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FAFBBC91C1813D4006872EC /* Build configuration list for PBXNativeTarget "ACFramework" */ = {
 			isa = XCConfigurationList;
@@ -829,6 +879,7 @@
 				9FAFBBCB1C1813D4006872EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FAFBBCD1C1813D4006872EC /* Build configuration list for PBXNativeTarget "ACFrameworkTests" */ = {
 			isa = XCConfigurationList;
@@ -837,6 +888,7 @@
 				9FAFBBCF1C1813D4006872EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FAFBBDF1C181446006872EC /* Build configuration list for PBXNativeTarget "ACShareExtension" */ = {
 			isa = XCConfigurationList;
@@ -845,6 +897,7 @@
 				9FAFBBE11C181446006872EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

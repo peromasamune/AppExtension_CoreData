@@ -55,8 +55,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 
     // MARK: - Button Action
     @objc private func plusButtonDidPush(sender : AnyObject?){
-        ACDataManager.createMemo("title")
-        self.reloadData()
+        ACDataManager.createMemo("title", block: { (completed) -> Void in
+            self.reloadData()
+        })
     }
 
     // MARK: - UITableViewDataSource

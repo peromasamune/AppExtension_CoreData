@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 public class ACDataManager: NSObject {
-    public static func createMemo(title : String) {
+    public static func createMemo(title : String, block : (Bool) -> Void) {
         let context = ACCoreDataMamager.sharedInstance.managedObjectContext
         let entity : NSEntityDescription = NSEntityDescription.entityForName("Memo", inManagedObjectContext: context!)!
 
@@ -18,7 +18,7 @@ public class ACDataManager: NSObject {
         memo.title = title
         memo.date = NSDate().timeIntervalSince1970
 
-        ACCoreDataMamager.sharedInstance.saveContext()
+        ACCoreDataMamager.sharedInstance.saveContext(block)
     }
 
     public static func getMemo() -> Array<ACMemoEntity>{

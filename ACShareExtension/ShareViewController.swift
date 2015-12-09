@@ -8,6 +8,8 @@
 
 import UIKit
 import Social
+import MobileCoreServices
+import ACFramework
 
 class ShareViewController: SLComposeServiceViewController {
 
@@ -20,7 +22,27 @@ class ShareViewController: SLComposeServiceViewController {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
     
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+        
+        let inputItem : NSExtensionItem = self.extensionContext!.inputItems.first as! NSExtensionItem
+        let itemProvider : NSItemProvider = inputItem.attachments?.first as! NSItemProvider
+        let contentType = kUTTypeURL as String
+        
+        if itemProvider.hasItemConformingToTypeIdentifier(contentType) {
+            itemProvider.loadItemForTypeIdentifier(contentType, options: nil, completionHandler: { (item, error) -> Void in
+                if let urlItem = item as? NSURL {
+                    println("url : \(urlItem.absoluteString) title : \(self.contentText)")
+                    
+                    ACDataManager.createMemo(self.contentText, block: { (completed) -> Void in
+                        let outputItem : NSExtensionItem = inputItem.copy() as! NSExtensionItem
+                        outputItem.attributedContentText = NSAttributedString(string: self.contentText, attributes: nil)
+                        let outputItems = [outputItem]
+                        self.extensionContext?.completeRequestReturningItems(outputItems, completionHandler: { (completed) -> Void in
+                            
+                        })
+                    })
+                }
+            })
+        }
     }
 
     override func configurationItems() -> [AnyObject]! {
